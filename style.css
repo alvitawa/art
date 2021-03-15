@@ -60,9 +60,11 @@ h2 {
     /* top: 10px; */
     bottom: 10px;
     right: 10px;
+    max-width: 25%;
 }
 
 .name {
     bottom: 10px;
     left: 10px;
+    max-width: 70%;
 }
