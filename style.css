@@ -17,3 +17,7 @@ img {
     object-fit: cover;
     vertical-align: bottom;
 }
+
+.movie_image {
+    visibility: hidden;
+}

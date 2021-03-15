@@ -13,8 +13,6 @@ function wait_for_stop (data) {
     }
     ix = some_films ? 1 : 2;
     message = data.split('%')[ix];
-    $("#geenfilms").text(message);
-    $("#geenfilms").show();
 }
 
 function add_movies() {
