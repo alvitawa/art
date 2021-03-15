@@ -19,9 +19,11 @@ ul {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
+    justify-content: space-around;
 }
 
 li {
+    margin: 10px;
     height: 40vh;
     flex-grow: 1;
     position: relative;

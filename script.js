@@ -3,6 +3,16 @@ var movie_counter = 0;
 var some_films = false;
 var no_more_films = false;
 var request_counter = 0;
+var last_added = null;
+
+function add_loaded(img) {
+    if (last_added === null) {
+        $(img).parent().parent().detach().prependTo($("#movie_list"))
+    } else {
+        $(img).parent().parent().detach().insertAfter($(last_added).parent().parent())
+    }
+    last_added = img;
+}
 
 function wait_for_stop (data) {
     if (request_counter > 0) {
