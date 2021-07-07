@@ -41,6 +41,11 @@ img:hover {
     -webkit-filter: grayscale(0%);
 }
 
+.invertimage {
+    -webkit-filter:invert(100%);
+    filter:progid:DXImageTransform.Microsoft.BasicImage(invert='1');
+}
+
 .movie_image {
     visibility: hidden;
 }

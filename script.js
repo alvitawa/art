@@ -1,5 +1,5 @@
 
-var movie_counter = 0;
+var page_counter = 0;
 var some_films = false;
 var no_more_films = false;
 var request_counter = 0;
@@ -26,30 +26,10 @@ function wait_for_stop (data) {
 }
 
 function add_movies() {
-    request_counter += 1;
+    request_counter += 1;    
 
-    // Numer of movies in one row
-    let elms = Math.floor($("#movie_list").width() / 124);
-
-    // Number of movies that need to be added to fill the last row
-    let rowf = elms * Math.ceil(movie_counter / elms) - movie_counter;
-
-    let limit;
-    let page;
-    // Request a new full row if the last row is already full
-    if (rowf == 0) {
-        limit = elms;
-    } else {
-        for (limit = rowf; limit > 0; limit--) {
-            if ((movie_counter / limit) % 1 == 0)
-                break;
-        }
-    }
-    page = movie_counter/limit
-
-    movie_counter += limit;
-
-    let url = `list${page}.html`;
+    let url = `list${page_counter}.html`;
+    page_counter += 1;
     let add = function( data ) {
         $('#movie_list').append(data);
     }
@@ -58,7 +38,7 @@ function add_movies() {
 
 
 function check_add_movies() {
-    if (no_more_films == true) {
+    if (page_counter >= total) {
         return;
     }
     var doc_height = $(document).height();
@@ -91,18 +71,6 @@ function amountscrolled() {
     var trackLength = docheight - winheight
     var bot = trackLength - scrollTop // gets percentage scrolled (ie: 80 or NaN if tracklength == 0)
     return bot;
-}
-
-function refresh_ratings(movie_overlay) {
-    return;
-    var ratings = $(movie_overlay).parent().children('.icon_overlay').children('.ratings');
-    var movie_id = $(movie_overlay).parent().children('movie-id').attr("movieid");
-    $.get(`php/get_rating.php?movie_id=${movie_id}&list_id=0`, function (data) {
-        ratings.children('.rating_explore').text(data);
-    });
-    $.get(`php/get_rating.php?movie_id=${movie_id}&list_id=1`, function (data) {
-        ratings.children('.rating_liked').text(data);
-    });
 }
 
 if (typeof dont_load_now === 'undefined') {
